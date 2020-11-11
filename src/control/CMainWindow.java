@@ -26,6 +26,19 @@ public class CMainWindow {
 				
 			}
 		});
+		
+		
+		VMW.btnRedFire.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				
+			VMW.panelDraw.	
+				
+			}
+		});
+		
+		VMW.btnBlueFire
 	}
 	
 

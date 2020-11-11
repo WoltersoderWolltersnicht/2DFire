@@ -15,30 +15,31 @@ import control.CMainWindow;
 		public Color [] palete;
 		public int [][] temperature; 
 		BufferedImage screen;
+		public Color color;
 		
 		public VDrawPanel(){
 			
-			//Creates BufferedImage of 1200 with & 800 heigth;
+			//Creates BufferedImage of 1200 with & 800 height;
 			setSize(810,510);
 			setBorder(new LineBorder(new Color(0, 0, 0)));
 			screen = new BufferedImage (810,510,BufferedImage.TYPE_INT_RGB);
 			
 			
-			//Inicialices 2 dimension array of the sizes of the BufferedImage ful with 0 ;
+			//Initializes 2 dimension array of the sizes of the BufferedImage with 0 ;
 			temperature = iniArray();
 			
 			//Creates an array of colors from 0 to 99
-			palete=fillPalete();
+			palete=fillPalete2(Color.BLACK,Color.RED,Color.YELLOW,Color.WHITE);
 			
 			
 	        new Thread(new Runnable() {
 	            @Override
 	            public void run() {
 	                while (true) {
-	                	//llama la clase paint
+	                	//Calls paint Method
 	                    repaint();
 	                    try {
-	                    	//espera x milisegundos para volver a subir.
+	                    	//Waits x milliseconds.
 	                        Thread.sleep(10);
 	                    } catch (InterruptedException ex) { }
 	                }
@@ -49,8 +50,8 @@ import control.CMainWindow;
         
 		
 		/**
-		 * Inicialices Arrays
-		 * Set all Array possitions to 0s
+		 * Initializes Arrays
+		 * Set all Array positions to 0s
 		 * @return
 		 */
 		private int[][] iniArray() {
@@ -70,22 +71,23 @@ import control.CMainWindow;
 		
 		/**
 		 * 
-		 * Funktion that paints in the BufferedImage 
+		 * Function that paints in the BufferedImage 
 		 * 
 		 */
 	    public void paint(Graphics g) {
 	    	
-	    	//Introduces in the botom row randomly 0 or 99 
+	    	//Introduces in the bottom row randomly 0 or 99 
 			for (int i=0; i<temperature.length;i++ ) {
 				
 				temperature[i][temperature[0].length-1] = (Math.random() > 0.10) ? 0 : CMainWindow.intensity ;
 			
 			}
 
+			
 			/**
 			 * 
 			 * Calculates the average of the three below pixels
-			 * (ignores the botom row because it has no below pixels)
+			 * (ignores the bottom row because it has no below pixels)
 			 * 
 			 */
 			int resultados;
@@ -125,7 +127,8 @@ import control.CMainWindow;
 
 	    }
 	    
-	    public Color[] fillPalete() {
+/*	    public Color[] fillPalete() {
+	    	
 	    	
 	    	Color[] palete = new Color[100]; 
 	    	
@@ -153,4 +156,50 @@ import control.CMainWindow;
 	    	return palete;
 	    	
 	    }
+*/	    
+	    public Color[] fillPalete2(Color c1, Color c2, Color c3, Color c4) {
+	    	
+	    	
+	    	int r,g,b;
+	    	Color[] list = new Color[100];
+	    	r=c1.getRed();
+	    	g=c1.getGreen();
+	    	b=c1.getBlue();
+	    	
+	    	for (int i = 0; i < 33; i++) {
+	    	    
+	    	    r-= (c1.getRed()-c2.getRed())/33;
+	    	    g-= (c1.getGreen()-c2.getGreen())/33;
+	    	    b-= (c1.getBlue()-c2.getBlue())/33;
+	    	    
+	    	    System.out.println(r);
+	    	    
+	    	    System.out.println(b);
+	    	    
+	    	    list[i]=new Color(r, g, b);
+	    	    
+	    	}
+	    	
+	    	for (int i = 33; i < 66; i++ ) {
+	    		
+	    	    r-= (c2.getRed()-c3.getRed())/33;
+	    	    g-= (c2.getGreen()-c3.getGreen())/33;
+	    	    b-= (c2.getBlue()-c3.getBlue())/33;
+	    	    		
+	    	    list[i]=new Color(r, g, b);
+	    	}
+	    	
+	    	for (int i = 66; i < 100; i++ ) {
+	    		
+	    	    r-= (c3.getRed()-c4.getRed())/33;
+	    	    g-= (c3.getGreen()-c4.getGreen())/33;
+	    	    b-= (c3.getBlue()-c4.getBlue())/33;
+	    	    		
+	    	    list[i]=new Color(r, g, b);
+	    	}
+	    	
+			return list;
+	
+	    }
+	    
     }
