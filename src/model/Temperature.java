@@ -7,6 +7,11 @@ public class Temperature {
 	public int[][] temperatureList;
 	public int intensity;
 
+	/**
+	 * Temperature Constructor:
+	 * @param x Width
+	 * @param y Height
+	 */
 	public Temperature(int x, int y) {
 		
 		this.temperatureList = new int[x][y];
@@ -20,8 +25,8 @@ public class Temperature {
 	}
 	
 	/**
-	 * Inicialices Arrays
-	 * Set all Array possitions to 0
+	 * Inicialices Arrays.
+	 * Set all Array possitions to 0:
 	 * 
 	 */
 	public void inicializesTemperature(){
@@ -36,7 +41,7 @@ public class Temperature {
 		
 	}
 	
-	//Introduces in the botom row randomly 0 or 99 
+	//Introduces in the botom row randomly 0 or 99: 
 	public void setHeatPoints() {
 		
 		for (int i=0; i<temperatureList.length;i++ ) {
@@ -49,8 +54,8 @@ public class Temperature {
 	
 	/**
 	 * 
-	 * Calculates the average of the three below pixels
-	 * (ignores the botom row because it has no below pixels)
+	 * Calculates the average of the three below pixels 
+	 * (ignores the botom row because it has no below pixels):
 	 * 
 	 */
 	public void calculateTemperature() {

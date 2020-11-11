@@ -14,74 +14,70 @@ import view.VMainWindow;
 public class CMainWindow {
 	
 	public VMainWindow VMW;
-	public CDrawPanel CDP;
+	public VDrawPanel VDP;
 	
+	/**
+	 * CMainWindow Constructor:
+	 */
 	public CMainWindow() {
 		
 		VMW = new VMainWindow();						
-		CDP= new CDrawPanel();
-		CDP.VDP.temperature.intensity=VMW.slider.getValue();
-		VMW.getContentPane().add(CDP.VDP);
+		VDP= new VDrawPanel();
+		VDP.temperature.intensity=VMW.slider.getValue();
+		VMW.getContentPane().add(VDP);
 		
-		//Slider ChangeListener 
+		//Slider ChangeListener: 
 		VMW.slider.addChangeListener(new ChangeListener() {
-			
 
-			
-		@Override
-		public void stateChanged(ChangeEvent e) {
+			public void stateChanged(ChangeEvent e) {
 				
-				CDP.VDP.temperature.intensity=VMW.slider.getValue();
+				VDP.temperature.intensity=VMW.slider.getValue();
 				
 			}
 		});
 	
+		
+		//Button Red Fire Action Listener:
 		VMW.btnRedFire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				CDP.VDP.palette.fillColors(Color.BLACK,Color.RED,Color.YELLOW,Color.WHITE);
+				VDP.palette.fillColors(Color.BLACK,Color.RED,Color.YELLOW,Color.WHITE);
 				
 			}
 		});
 		
+		
+		//Button Blue Fire Action Listener:
 		VMW.btnBlueFire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				CDP.VDP.palette.fillColors(Color.BLACK,new Color(0,0,255),new Color(30,144,255),Color.WHITE);
+				VDP.palette.fillColors(Color.BLACK,new Color(0,0,255),new Color(30,144,255),Color.WHITE);
 				
 			}
 		});
 		
+		
+		//Button Random Fire Action Listener:
 		VMW.btnRandomFire.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				while(true) {
+					
 					Color c1 = new Color((int)(Math.random() * 0x1000000));
 					Color c2 = new Color((int)(Math.random() * 0x1000000));
 					Color c3 = new Color((int)(Math.random() * 0x1000000));
 					Color c4 = new Color((int)(Math.random() * 0x1000000));
-				try {
-					CDP.VDP.palette.fillColors(c1,c2,c3,c4);
-					break;
-				}catch(Exception er) {
 					
-					
-					
-				}
+					try {
+						
+						VDP.palette.fillColors(c1,c2,c3,c4);
+						break;
+						
+					}catch(Exception er) {}
 				}	
 			}	
 		});
+		
 	}
-	
-
-
-      
-    
-    
-	
-	
-		
-		
-
 	
 }

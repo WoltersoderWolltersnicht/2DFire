@@ -6,26 +6,37 @@ public class Palette {
 	
 	public Color[] colorList;
 	
+	/**
+	 * 
+	 * Palette Constructor:
+	 * 
+	 */
 	public Palette() {
 		
-		//Inicializes an array of colors from 0 to 99
 		fillColors(Color.BLACK,Color.RED,Color.YELLOW,Color.WHITE);
 		
 	}
 
-	public void fillColors(Color c1, Color c2, Color c3, Color c4) {
+	/**
+	 * Procedure that with 4 colors sets in to colorList an array with the graduation of the colors:
+	 * 
+	 * @param Group of colors
+	 * @return Color[] Graduated Array of Colors
+	 * 
+	 */
+	public void fillColors(Color color1, Color color2, Color color3, Color color4) {
 	    	
 	    	int r,g,b;
 	    	Color[] list = new Color[100];
-	    	r=c1.getRed();
-	    	g=c1.getGreen();
-	    	b=c1.getBlue();
+	    	r=color1.getRed();
+	    	g=color1.getGreen();
+	    	b=color1.getBlue();
 	    	
 	    	for (int i = 0; i < 33; i++) {
 	    	    
-	    	    r-= (c1.getRed()-c2.getRed())/33;
-	    	    g-= (c1.getGreen()-c2.getGreen())/33;
-	    	    b-= (c1.getBlue()-c2.getBlue())/33;
+	    	    r-= (color1.getRed()-color2.getRed())/33;
+	    	    g-= (color1.getGreen()-color2.getGreen())/33;
+	    	    b-= (color1.getBlue()-color2.getBlue())/33;
 	    	    	    
 	    	    list[i]=new Color(r, g, b);
 	    	    
@@ -33,18 +44,18 @@ public class Palette {
 	    	
 	    	for (int i = 33; i < 66; i++ ) {
 	    		
-	    	    r-= (c2.getRed()-c3.getRed())/33;
-	    	    g-= (c2.getGreen()-c3.getGreen())/33;
-	    	    b-= (c2.getBlue()-c3.getBlue())/33;
+	    	    r-= (color2.getRed()-color3.getRed())/33;
+	    	    g-= (color2.getGreen()-color3.getGreen())/33;
+	    	    b-= (color2.getBlue()-color3.getBlue())/33;
 	    	    		
 	    	    list[i]=new Color(r, g, b);
 	    	}
 	    	
 	    	for (int i = 66; i < 100; i++ ) {
 	    		
-	    	    r-= (c3.getRed()-c4.getRed())/33;
-	    	    g-= (c3.getGreen()-c4.getGreen())/33;
-	    	    b-= (c3.getBlue()-c4.getBlue())/33;
+	    	    r-= (color3.getRed()-color4.getRed())/33;
+	    	    g-= (color3.getGreen()-color4.getGreen())/33;
+	    	    b-= (color3.getBlue()-color4.getBlue())/33;
 	    	    		
 	    	    list[i]=new Color(r, g, b);
 	    	}

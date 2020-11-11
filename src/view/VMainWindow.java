@@ -19,7 +19,7 @@ public class VMainWindow extends JFrame {
 	public JButton btnRandomFire;
 	
 	/**
-	 * Create the frame.
+	 * Constructor VMainWindow:
 	 */
 	public VMainWindow() {
 		setSize(833,675);
