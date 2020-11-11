@@ -33,7 +33,6 @@ public class VMainWindow extends JFrame {
 		
 		slider = new JSlider();
 		slider.setValue(500);
-		slider.
 		slider.setMaximum(1000);
 		slider.setBounds(10, 11, 785, 26);
 		panelControl.add(slider);
